@@ -284,10 +284,10 @@ map <C-L> :bp<CR>        "上一个缓冲区
 map <C-Left> :bn<CR>            "下一个缓冲区
 map <C-Right> :bp<CR>        "上一个缓冲区
 "代码格式化---------------------------------------------------------------------------------------
-noremap <F12> :Format<CR>:syntax sync fromstart<CR>
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+noremap <F12> :Format<CR>
+"command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "前端主要使用Prettier美化
-autocmd filetype yaml,vue nnoremap <buffer> <F12> :Prettier<CR>
+"autocmd filetype yaml,vue nnoremap <buffer> <F12> :Prettier<CR>
 "编译型
 autocmd filetype cs,c,cpp,kotlin,sh,vim,tex noremap <buffer> <F12> :Autoformat<CR>
 "常用快捷键---------------------------------------------------------------------------------------
