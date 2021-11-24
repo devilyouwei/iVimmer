@@ -285,9 +285,9 @@ map <C-Left> :bn<CR>            "下一个缓冲区
 map <C-Right> :bp<CR>        "上一个缓冲区
 "代码格式化---------------------------------------------------------------------------------------
 noremap <F12> :Format<CR>
-"command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "前端主要使用Prettier美化
-"autocmd filetype yaml,vue nnoremap <buffer> <F12> :Prettier<CR>
+autocmd filetype yaml,vue nnoremap <buffer> <F12> :Prettier<CR>
 "编译型
 autocmd filetype cs,c,cpp,kotlin,sh,vim,tex noremap <buffer> <F12> :Autoformat<CR>
 "常用快捷键---------------------------------------------------------------------------------------
@@ -302,45 +302,8 @@ let g:floaterm_keymap_toggle = '<F4>'
 "tagbar
 nmap <F9> :TagbarToggle<CR>
 "按F5保存
-nmap <F5> :w<CR>:syntax sync fromstart<CR>
-"按F6编译运行
-nmap <F6> :call Compile()<CR>:syntax sync fromstart<CR>
-func! Compile()
-    exec "w"
-    if &filetype == 'c'
-        exec "!gcc % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'java'
-        exec "!javac %"
-        exec "!time java %<"
-    elseif &filetype == 'kotlin'
-        exec "!kotlinc-native % -o %<"
-        exec "!time ./%<.kexe"
-    elseif &filetype == 'cs'
-        exec "!mcs %"
-        exec "!time mono %<.exe"
-    elseif &filetype == 'python'
-        exec "!time python3 %"
-    elseif &filetype == 'javascript'
-        exec "!time node %"
-    elseif &filetype == 'php'
-        exec "!time php %"
-    elseif &filetype == 'sh'
-        exec "!./%"
-    elseif &filetype == 'tex'
-        exec ":LLPStartPreview"
-    endif
-endfunc
-"C,C++的调试
-map <F8> :call Rungdb()<CR>
-func! Rungdb()
-    exec "w"
-    exec "!g++ % -g -o %<"
-    exec "!gdb ./%<"
-endfunc
+nmap <F5> :w<CR>
+
 "实用配置------------------------------------------------------------------------------
 " 只剩 NERDTree时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -392,29 +355,7 @@ set autochdir "输出时只有文件名，不带./ ../等目录前缀(默认了�
 set termencoding=UTF-8
 set encoding=UTF-8
 set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030
-"在插入模式中使用Ctrl+v粘贴全局剪贴板内容
-imap <C-V> <Esc>"+gpa
-nmap <C-V> "+gp
-"在Visual模式中使用Ctrl+c复制内容到全局剪贴板
-vnoremap <C-c> "+y
-"在Visual模式中使用Ctrl+x剪切内容到全局剪贴板
-vnoremap <C-x> "+x
-"##### 在fcitx输入法下，一旦进入vim normal模式会恢复到英文###########
-let g:input_toggle = 1
-function! Fcitx2en()
-    let s:input_status = system("fcitx-remote")
-    if s:input_status == 2
-        let g:input_toggle = 1
-        let l:a = system("fcitx-remote -c")
-    endif
-endfunction
-set ttimeoutlen=150
-"退出插入模式
-"autocmd InsertLeave,CmdLineLeave * call Fcitx2en()
-"#####################################################################
-"
-"
-"
+
 "fzf-----------------------------------------------------------------------
 function! s:fzf_statusline()
     " Override statusline as you like
