@@ -37,12 +37,23 @@ brew install lazygit
 echo "########For Java"
 brew install java
 
+echo "Install vim-plug------------------------------------------"
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [ "$?" != 0 ]; then
+    red "Network Error: curl fail to download 'plug.vim'"
+    exit 1
+fi
+echo "----------------------------------------------------------"
+echo ""
+sleep 1
+
+wget -P ~/Library/Fonts/ https://github.com/devilyouwei/linux-font/raw/master/Monaco/Nerd/YaheiMonacoNerd.ttf
+wget -P ~/.config/nvim/ https://raw.githubusercontent.com/devilyouwei/iVimmer/master/coc-settings.json
+wget -P ~/.config/nvim/ https://raw.githubusercontent.com/devilyouwei/iVimmer/master/init.vim
+
 echo "########Nvim PlugInstall:"
 nvim -c PlugInstall -c q -c q
 
 echo 'alias vim="nvim"' >>~/.zshrc
 echo 'alias vi="nvim"' >>~/.zshrc
-
-wget -P ~/Library/Fonts/ https://github.com/devilyouwei/linux-font/raw/master/Monaco/Nerd/YaheiMonacoNerd.ttf
-wget -P ~/.config/nvim/ https://raw.githubusercontent.com/devilyouwei/iVimmer/master/coc-settings.json
-wget -P ~/.config/nvim/ https://raw.githubusercontent.com/devilyouwei/iVimmer/master/init.vim

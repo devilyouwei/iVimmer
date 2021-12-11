@@ -387,6 +387,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nmap <C-F> :Files<CR>
 nmap <C-P> :Files<CR>
 nmap ff :Files<CR>
+vmap <C-c> "+y
+imap <C-V> <Esc>"+gpa
+nmap <C-V> "+gp
 imap <C-P> <Esc>:Files<CR>
 nmap <C-B> :Buffers<CR>
 nmap fb :Buffers<CR>
