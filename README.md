@@ -127,7 +127,14 @@ brew install kotlin
 brew install ktlint
 ```
 
-6.其他
+注意：你还要安装 java 和配置 java 环境才能使用 coc-kotlin 的功能
+
+```bash
+brew install openjdk
+echo 'export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"' >> ~/.zshrc
+```
+
+7.其他
 
 ```bash
 brew install ctags
