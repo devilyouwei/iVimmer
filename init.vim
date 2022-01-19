@@ -69,7 +69,7 @@ let g:polyglot_disabled = [
             \'reacttypescript',
             \'php'
             \]
-Plug 'tomlion/vim-solidity'
+Plug 'thesis/vim-solidity'
 Plug 'uiiaoo/java-syntax.vim', {'for':'java'}
 Plug 'othree/html5.vim', {'for':['html','vue','php']}
 Plug 'hail2u/vim-css3-syntax',{'for':['html','vue','php']}
@@ -91,6 +91,7 @@ Plug 'neoclide/coc-neco'
 Plug 'voldikss/vim-floaterm'
 let g:floaterm_position = 'center'
 Plug 'Chiel92/vim-autoformat'
+Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
@@ -106,6 +107,8 @@ Plug 'vim-scripts/matchit.zip', {'for':['html','xml','vue','php','typescriptreac
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 " json
 Plug 'leshill/vim-json', {'for':'json'}
+"kotlin
+Plug 'udalov/kotlin-vim'
 " markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -284,12 +287,12 @@ map <C-L> :bp<CR>        "上一个缓冲区
 map <C-Left> :bn<CR>            "下一个缓冲区
 map <C-Right> :bp<CR>        "上一个缓冲区
 "代码格式化---------------------------------------------------------------------------------------
-noremap <F12> :Format<CR>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-"前端主要使用Prettier美化
-autocmd filetype yaml,vue nnoremap <buffer> <F12> :Prettier<CR>
-"编译型
-autocmd filetype cs,c,cpp,kotlin,sh,vim,tex noremap <buffer> <F12> :Autoformat<CR>
+noremap <F12> :Format<CR>
+autocmd filetype vim noremap <buffer> <F12> :Autoformat<CR>
+autocmd filetype vue,typescriptreact,javascriptreact nnoremap <buffer> <F12> :Prettier<CR>
+let g:shfmt_opt="-ci"
+autocmd filetype cs,c,cpp,kotlin,sh,zsh,tex noremap <buffer> <F12> :Neoformat<CR>
 "常用快捷键---------------------------------------------------------------------------------------
 "去空行，去行尾空格
 nnoremap <F2> :g/^\s*$/d<CR>:g/\s\+$/s<CR>
@@ -405,4 +408,3 @@ inoremap <expr> <c-x><c-w> fzf#vim#complete#word({'right': '20%'})
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
             \,sm:block-blinkwait175-blinkoff150-blinkon175
-

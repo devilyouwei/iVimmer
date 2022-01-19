@@ -1,37 +1,36 @@
 # iVimmer
 
-你知道的，为了效率......
+在你的 Mac 上搭建一个更好的 Vi 编辑器！ ![example](img/img0.png)
 
-在你的 Mac 上搭建一个更好的Vim编辑器！ ![example](img/img0.png)
-
-感谢[黄老板](https://github.com/devilyouwei)的[原始版本](https://github.com/devilyouwei/NVimmer)（Linux 版）和大力支持。
+感谢[黄老板](https://github.com/devilyouwei)的[原始版本](https://github.com/devilyouwei/NVimmer)（Linux Ubuntu 版）支持
 
 [English Readme](README_EN.md)
 
 ## 适用的语言
 
-1.  HTML CSS JS **[eslint]**
-2.  Java **[color enhanced]**
-3.  C# **[enhanced]**
+1.  HTML CSS JS
+2.  Java
+3.  C# [关闭支持？]
 4.  vue
-5.  TypeScript
-6.  PHP
-7.  C/C++ [增强]
-8.  Markdown
-9.  JSON
-10. Wechat wxml
-11. react js/jsx/tsx **[new]**
-12. Kotlin **[weakly support]**
-13. 英语单词 1000 多自动补全 **[new]**
-14. Emoji 表情补全 (输入`:`后自动弹出) **[new]**
+5.  react js/jsx/tsx
+6.  TypeScript
+7.  PHP
+8.  C/C++
+9.  Markdown
+10. JSON
+11. 微信小程序 [弱支持]
+12. Kotlin [增强/自动补全仍需等待 coc-kotlin 修复服务]
+13. 英语单词自动补全
+14. Emoji 表情补全 [输入`:`后自动弹出]
+15. Latex
 
-注：所有的现代前端框架的代码 format 和 lint 默认是 **prettier+eslint**！
+注：所有的现代前端框架(vue,react)的代码 format 和 lint 默认是 **prettier 和 eslint**！
 
 ## 开始之前
 
 （测试版本为 macOS Catalina 10.15.5）
 
-1.保证你能科学上网。
+1.大陆保证你能科学上网。
 
 2.更新 brew:
 
@@ -119,6 +118,13 @@ pip3 install neovim #python3
 ```bash
 brew install llvm
 brew install ccls
+```
+
+5.kotlin
+
+```bash
+brew install kotlin
+brew install ktlint
 ```
 
 6.其他
